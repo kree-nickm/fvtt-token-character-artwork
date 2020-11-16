@@ -7,9 +7,9 @@
     "scripts": ["./token-character-artwork.js"],
     "styles": [],
     "packs": [],
-    "url": "",
-    "manifest": "",
-    "download": "",
+    "url": "https://github.com/kree-nickm/fvtt-token-character-artwork",
+    "manifest": "https://raw.githubusercontent.com/kree-nickm/fvtt-token-character-artwork/main/module.json",
+    "download": "https://github.com/kree-nickm/fvtt-token-character-artwork/archive/main.zip",
     "minimumCoreVersion": "0.7.5",
     "compatibleCoreVersion": "0.7.7"
 }
