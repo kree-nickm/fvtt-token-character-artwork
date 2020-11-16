@@ -1,0 +1,15 @@
+{
+    "name": "token-character-artwork",
+    "title": "Token Character Artwork",
+    "description": "<p>Allows anyone to see an actor's artwork when they interact with its token.</p>",
+    "version": "1.0.0",
+    "author": "Kryand",
+    "scripts": ["./token-character-artwork.js"],
+    "styles": [],
+    "packs": [],
+    "url": "",
+    "manifest": "",
+    "download": "",
+    "minimumCoreVersion": "0.7.5",
+    "compatibleCoreVersion": "0.7.7"
+}
