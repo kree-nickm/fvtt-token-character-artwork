@@ -1,6 +1,6 @@
 "use strict";
 
-Hooks.once("ready", () => {
+Hooks.once("init", () => {
    game.settings.register("token-character-artwork", "trigger", {
       name: "Preview Trigger",
       hint: "The button that needs to be pressed in order to have the artwork pop up. Note: If you select an option with no modifier key (shift, ctrl, alt), you can't pop up the artwork of your own tokens.",
@@ -116,8 +116,13 @@ Hooks.once("ready", () => {
       }
       if(!imagePopout)
       {
+         let title = "Character Artwork";
+         if(this.data.displayName == TOKEN_DISPLAY_MODES.HOVER || this.data.displayName == TOKEN_DISPLAY_MODES.ALWAYS)
+            title = this.data.name;
+         else if(this.actor.permission != ENTITY_PERMISSIONS.NONE)
+            title = this.actor.data.name;
          imagePopout = new ImagePopout(this.actor.data.img, {
-            title: this.actor.data.name,
+            title: title,
             entity: {}
          });
          imagePopout._related = {};

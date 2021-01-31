@@ -2,7 +2,7 @@
     "name": "token-character-artwork",
     "title": "Token Character Artwork",
     "description": "<p>Allows anyone to see an actor's artwork when they interact with its token.</p>",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "author": "Kryand",
     "scripts": ["./token-character-artwork.js"],
     "styles": [],
@@ -10,6 +10,8 @@
     "url": "https://github.com/kree-nickm/fvtt-token-character-artwork",
     "manifest": "https://raw.githubusercontent.com/kree-nickm/fvtt-token-character-artwork/main/module.json",
     "download": "https://github.com/kree-nickm/fvtt-token-character-artwork/archive/main.zip",
+    "changelog": "https://github.com/kree-nickm/fvtt-token-character-artwork/blob/main/CHANGELOG.md",
+    "bugs": "https://github.com/kree-nickm/fvtt-token-character-artwork/issues",
     "minimumCoreVersion": "0.7.5",
-    "compatibleCoreVersion": "0.7.7"
+    "compatibleCoreVersion": "0.7.9"
 }
