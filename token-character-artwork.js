@@ -36,19 +36,8 @@ Hooks.once("init", () => {
       return true;
    };
    
-   let methodStore = {
-      Token: {
-         activateListeners: Token.prototype.activateListeners,
-         _onClickLeft: Token.prototype._onClickLeft,
-         _onClickLeft2: Token.prototype._onClickLeft2,
-         _onClickRight: Token.prototype._onClickRight,
-         _onClickRight2: Token.prototype._onClickRight2,
-      },
-   };
-   
-   Token.prototype.activateListeners = function()
-   {
-      methodStore.Token.activateListeners.apply(this, arguments);
+   libWrapper.register("token-character-artwork", "Token.prototype.activateListeners", function(wrapped, ...args) {
+      wrapped(...args);
       this.oldCanClickLeft = this.mouseInteractionManager.permissions.clickLeft;
       this.oldCanClickLeft2 = this.mouseInteractionManager.permissions.clickLeft2;
       this.oldCanClickRight = this.mouseInteractionManager.permissions.clickRight;
@@ -57,51 +46,47 @@ Hooks.once("init", () => {
       this.mouseInteractionManager.permissions.clickLeft2 = true;
       this.mouseInteractionManager.permissions.clickRight = true;
       this.mouseInteractionManager.permissions.clickRight2 = true;
-   };
+   }, "WRAPPER");
    
-   Token.prototype._onClickLeft = function(event)
-   {
-      let result = Hooks.call(`clickLeftToken`, this, event);
+   libWrapper.register("token-character-artwork", "Token.prototype._onClickLeft", function(wrapped, ...args) {
+      let result = Hooks.call(`clickLeftToken`, this, args[0]);
       if(result === false)
          return false;
-      else if(this.oldCan("ClickLeft", event))
-         return methodStore.Token._onClickLeft.apply(this, arguments);
+      else if(this.oldCan("ClickLeft", args[0]))
+         return wrapped(...args);
       else
-         event.resumePropagation();
-   };
+         args[0].resumePropagation();
+   }, "MIXED");
    
-   Token.prototype._onClickLeft2 = function(event)
-   {
-      let result = Hooks.call(`clickLeft2Token`, this, event);
+   libWrapper.register("token-character-artwork", "Token.prototype._onClickLeft2", function(wrapped, ...args) {
+      let result = Hooks.call(`clickLeft2Token`, this, args[0]);
       if(result === false)
          return false;
-      else if(this.oldCan("ClickLeft2", event))
-         return methodStore.Token._onClickLeft2.apply(this, arguments);
+      else if(this.oldCan("ClickLeft2", args[0]))
+         return wrapped(...args);
       else
-         event.resumePropagation();
-   };
+         args[0].resumePropagation();
+   }, "MIXED");
    
-   Token.prototype._onClickRight = function(event)
-   {
-      let result = Hooks.call(`clickRightToken`, this, event);
+   libWrapper.register("token-character-artwork", "Token.prototype._onClickRight", function(wrapped, ...args) {
+      let result = Hooks.call(`clickRightToken`, this, args[0]);
       if(result === false)
          return false;
-      else if(this.oldCan("ClickRight", event))
-         return methodStore.Token._onClickRight.apply(this, arguments);
+      else if(this.oldCan("ClickRight", args[0]))
+         return wrapped(...args);
       else
-         event.resumePropagation();
-   };
+         args[0].resumePropagation();
+   }, "MIXED");
    
-   Token.prototype._onClickRight2 = function(event)
-   {
-      let result = Hooks.call(`clickRight2Token`, this, event);
+   libWrapper.register("token-character-artwork", "Token.prototype._onClickRight2", function(wrapped, ...args) {
+      let result = Hooks.call(`clickRight2Token`, this, args[0]);
       if(result === false)
          return false;
-      else if(this.oldCan("ClickRight2", event))
-         return methodStore.Token._onClickRight2.apply(this, arguments);
+      else if(this.oldCan("ClickRight2", args[0]))
+         return wrapped(...args);
       else
-         event.resumePropagation();
-   };
+         args[0].resumePropagation();
+   }, "MIXED");
    
    Token.prototype.showArtwork = function()
    {
@@ -117,15 +102,14 @@ Hooks.once("init", () => {
       if(!imagePopout)
       {
          let title = "Character Artwork";
-         if(this.data.displayName == TOKEN_DISPLAY_MODES.HOVER || this.data.displayName == TOKEN_DISPLAY_MODES.ALWAYS)
+         if(this.data.displayName == CONST.TOKEN_DISPLAY_MODES.HOVER || this.data.displayName == CONST.TOKEN_DISPLAY_MODES.ALWAYS)
             title = this.data.name;
-         else if(this.actor.permission != ENTITY_PERMISSIONS.NONE)
+         else if(this.actor.permission != CONST.ENTITY_PERMISSIONS.NONE)
             title = this.actor.data.name;
          imagePopout = new ImagePopout(this.actor.data.img, {
             title: title,
             entity: {}
          });
-         imagePopout._related = {};
       }
       imagePopout.render(true);
    };
