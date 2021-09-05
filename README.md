@@ -1,5 +1,5 @@
 # Token Character Artwork
-Allows anyone to see an actor's artwork when they interact with its token. Each user can select their preferred hotkey, though currently it must be some combination of shift, left click, and right click.
+Allows anyone to see an actor's artwork when they interact with its token. Pressing a keybind of your choice causes a popup to open with the character's artwork, as opposed to just an enlarged version of the token. At the moment only a couple types of click/shift-click are allowed; see the modules settings to select your preference.
 
 ## Installation
 In the Foundry VTT module manager, click the Install Module button and paste this URL into the Manifest URL box, then click Install: `https://raw.githubusercontent.com/kree-nickm/fvtt-token-character-artwork/main/module.json`
